@@ -10,6 +10,8 @@ You can read all about the [user journeys](docs/user_journeys.md), where possibl
 
 You can check the [milestones](docs/milestones.md) for the project, where each one defines a MVP to achieve when finished.
 
+You can read the [user stories](docs/user_stories.md) that define the functioning of the app.
+
 Project for the Cloud Computing course of the Computer Engineering Master at University of Granada.
 
 # Initial configuration
