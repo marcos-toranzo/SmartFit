@@ -19,6 +19,7 @@ The database for the app will be initially populated with basic routines for gen
 - A simple description.
 - The user that uploaded it.
 - The likes or upvotes that it has (the bigger, the better).
+- The dislikes or downvotes that it has (the smaller, the better).
 - Comments and feedback from users.
 - Keywords and tags indicating instructions or why would you do this routine.
 - A series of exercises that comprehend the actual routine.
