@@ -37,3 +37,15 @@ class Routine():
 
     def add_comment(self, user: User, comment: str):
         self.comments.append(Comment(comment, user))
+
+    def like(self):
+        self.likes += 1
+
+    def dislike(self):
+        self.dislike += 1
+
+    def unlike(self):
+        self.likes = max(0, self.likes - 1)
+
+    def undislike(self):
+        self.dislikes = max(0, self.dislikes - 1)
