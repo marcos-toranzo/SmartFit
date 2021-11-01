@@ -26,6 +26,7 @@ class UserFitnessProfile():
             health_state: the general health state of the user.
             physical_activity: how physically active the user is.
             height: user's height in centimeters.
+            weight: user's weight in kilograms.
         '''
         self.age = age
         self.health_state = health_state
