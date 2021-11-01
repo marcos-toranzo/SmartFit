@@ -42,7 +42,7 @@ class Routine():
         self.likes += 1
 
     def dislike(self):
-        self.dislike += 1
+        self.dislikes += 1
 
     def unlike(self):
         self.likes = max(0, self.likes - 1)
