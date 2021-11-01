@@ -35,8 +35,8 @@ class Routine():
     def _build_workout_table(self) -> map:
         pass
 
-    def add_comment(self, user: User, comment: str):
-        self.comments.append(Comment(comment, user))
+    def add_comment(self, comment: Comment):
+        self.comments.append(comment)
 
     def like(self):
         self.likes += 1
