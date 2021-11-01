@@ -1,4 +1,4 @@
-from user import User
+from src.entities.user import User
 
 
 class Comment():
