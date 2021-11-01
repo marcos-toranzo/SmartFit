@@ -1,4 +1,4 @@
-from exercise import BodyPart, Exercise, ExerciseStep
+from src.entities.exercise import BodyPart, Exercise, ExerciseStep
 
 
 def test_exercise_constructor():
