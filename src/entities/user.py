@@ -42,6 +42,26 @@ class User():
         self.user_fitness_profile = user_fitness_profile
         self.rating = rating
 
+    @property
+    def age(self) -> int:
+        return self.user_fitness_profile.age
+
+    @property
+    def weight(self) -> int:
+        return self.user_fitness_profile.weight
+
+    @property
+    def height(self) -> int:
+        return self.user_fitness_profile.height
+
+    @property
+    def health_state(self) -> HealthState:
+        return self.user_fitness_profile.health_state
+
+    @property
+    def physical_activity(self) -> PhysicalActivity:
+        return self.user_fitness_profile.physical_activity
+
     def update_age(self, age: int):
         profile = self.user_fitness_profile
 
