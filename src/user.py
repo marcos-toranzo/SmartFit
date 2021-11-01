@@ -70,3 +70,6 @@ class User():
 
         self.user_fitness_profile = UserFitnessProfile(
             profile.age, profile.health_state, profile.height, profile.physical_activity, weight)
+
+    def update_rating(self, rating: int):
+        self.rating = rating
