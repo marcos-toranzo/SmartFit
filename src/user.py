@@ -40,3 +40,33 @@ class User():
         self.last_name = last_name
         self.user_fitness_profile = user_fitness_profile
         self.rating = rating
+
+    def update_age(self, age: int):
+        profile = self.user_fitness_profile
+
+        self.user_fitness_profile = UserFitnessProfile(
+            age, profile.health_state, profile.height, profile.physical_activity, profile.weight)
+
+    def update_health_state(self, health_state: HealthState):
+        profile = self.user_fitness_profile
+
+        self.user_fitness_profile = UserFitnessProfile(
+            profile.age, health_state, profile.height, profile.physical_activity, profile.weight)
+
+    def update_height(self, height: int):
+        profile = self.user_fitness_profile
+
+        self.user_fitness_profile = UserFitnessProfile(
+            profile.age, profile.health_state, height, profile.physical_activity, profile.weight)
+
+    def update_physical_activity(self, physical_activity: PhysicalActivity):
+        profile = self.user_fitness_profile
+
+        self.user_fitness_profile = UserFitnessProfile(
+            profile.age, profile.health_state, profile.height, physical_activity, profile.weight)
+
+    def update_weight(self, weight: int):
+        profile = self.user_fitness_profile
+
+        self.user_fitness_profile = UserFitnessProfile(
+            profile.age, profile.health_state, profile.height, profile.physical_activity, weight)
