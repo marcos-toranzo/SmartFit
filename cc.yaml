@@ -1,7 +1,7 @@
 entidad:
-  - src/user.py
-  - src/exercise.py
-  - src/routine.py
+  - src/entities/user.py
+  - src/entities/exercise.py
+  - src/entities/routine.py
 
 lenguaje: python
 
