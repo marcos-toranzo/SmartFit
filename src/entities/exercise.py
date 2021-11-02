@@ -33,6 +33,18 @@ class Exercise():
             workout_table: the workout load table. The keys must be [BodyPart]s, and the values must be [int] from 0 to 100, both included.
             steps: steps to follow to complete the exercise. Must be a [list] of [ExerciseStep].
         '''
-        self.description = description
-        self.workout_table = workout_table
-        self.steps = steps
+        self._description = description
+        self._workout_table = workout_table
+        self._steps = steps
+
+    @property
+    def description(self) -> str:
+        return self._description
+
+    @property
+    def workout_table(self) -> map:
+        return self._workout_table
+
+    @property
+    def steps(self) -> list:
+        return self._steps
