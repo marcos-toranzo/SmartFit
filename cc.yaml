@@ -1,4 +1,4 @@
-entity:
+entidad:
   - src/user.py
   - src/exercise.py
   - src/routine.py
