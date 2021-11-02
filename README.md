@@ -32,6 +32,8 @@ You can check the [milestones](docs/milestones.md) for the project, where each o
 
 You can read the [user stories](docs/user_stories.md) that define the functioning of the app.
 
+You can learn about the [testing libraries and framework](docs/testing_framework.md) used in the project, and why we chose them.
+
 # Initial configuration
 
 Go [here](docs/initial_configuration.md) to see the steps taken for the initial configuration.
