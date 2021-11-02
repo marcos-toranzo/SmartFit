@@ -37,10 +37,26 @@ class UserFitnessProfile():
 
 class User():
     def __init__(self, first_name: str, last_name:  str, user_fitness_profile: UserFitnessProfile, rating: int):
-        self.first_name = first_name
-        self.last_name = last_name
-        self.user_fitness_profile = user_fitness_profile
-        self.rating = rating
+        self._first_name = first_name
+        self._last_name = last_name
+        self._user_fitness_profile = user_fitness_profile
+        self._rating = rating
+
+    @property
+    def first_name(self) -> str:
+        return self._first_name
+
+    @property
+    def last_name(self) -> str:
+        return self._last_name
+
+    @property
+    def user_fitness_profile(self) -> UserFitnessProfile:
+        return self._user_fitness_profile
+
+    @property
+    def rating(self) -> int:
+        return self._rating
 
     @property
     def age(self) -> int:
@@ -63,34 +79,34 @@ class User():
         return self.user_fitness_profile.physical_activity
 
     def update_age(self, age: int):
-        profile = self.user_fitness_profile
+        profile = self._user_fitness_profile
 
-        self.user_fitness_profile = UserFitnessProfile(
+        self._user_fitness_profile = UserFitnessProfile(
             age, profile.health_state, profile.height, profile.physical_activity, profile.weight)
 
     def update_health_state(self, health_state: HealthState):
-        profile = self.user_fitness_profile
+        profile = self._user_fitness_profile
 
-        self.user_fitness_profile = UserFitnessProfile(
+        self._user_fitness_profile = UserFitnessProfile(
             profile.age, health_state, profile.height, profile.physical_activity, profile.weight)
 
     def update_height(self, height: int):
-        profile = self.user_fitness_profile
+        profile = self._user_fitness_profile
 
-        self.user_fitness_profile = UserFitnessProfile(
+        self._user_fitness_profile = UserFitnessProfile(
             profile.age, profile.health_state, height, profile.physical_activity, profile.weight)
 
     def update_physical_activity(self, physical_activity: PhysicalActivity):
-        profile = self.user_fitness_profile
+        profile = self._user_fitness_profile
 
-        self.user_fitness_profile = UserFitnessProfile(
+        self._user_fitness_profile = UserFitnessProfile(
             profile.age, profile.health_state, profile.height, physical_activity, profile.weight)
 
     def update_weight(self, weight: int):
-        profile = self.user_fitness_profile
+        profile = self._user_fitness_profile
 
-        self.user_fitness_profile = UserFitnessProfile(
+        self._user_fitness_profile = UserFitnessProfile(
             profile.age, profile.health_state, profile.height, profile.physical_activity, weight)
 
     def update_rating(self, rating: int):
-        self.rating = rating
+        self._rating = rating
