@@ -22,15 +22,47 @@ class Routine():
             tags: tags related to the routine. Must be a [list] of [str]s.
             exercises: exercises that comprehen the routines. Must be a [list] of [Exercise]s.
         '''
-        self.description = description
-        self.uploaded_by = uploaded_by
-        self.likes = likes
-        self.dislikes = dislikes
-        self.comments = comments
-        self.tags = tags
-        self.exercises = exercises
+        self._description = description
+        self._uploaded_by = uploaded_by
+        self._likes = likes
+        self._dislikes = dislikes
+        self._comments = comments
+        self._tags = tags
+        self._exercises = exercises
 
-        self.workout_table = self._build_workout_table()
+        self._workout_table = self._build_workout_table()
+
+    @property
+    def description(self) -> str:
+        return self._description
+
+    @property
+    def uploaded_by(self) -> User:
+        return self._uploaded_by
+
+    @property
+    def likes(self) -> int:
+        return self._likes
+
+    @property
+    def dislikes(self) -> int:
+        return self._dislikes
+
+    @property
+    def comments(self) -> list:
+        return self._comments
+
+    @property
+    def tags(self) -> list:
+        return self._tags
+
+    @property
+    def exercises(self) -> list:
+        return self._exercises
+
+    @property
+    def workout_table(self) -> map:
+        return self._workout_table
 
     def _build_workout_table(self) -> map:
         '''
@@ -38,7 +70,7 @@ class Routine():
         '''
         total_workout_table = {}
 
-        tables = [exercise.workout_table for exercise in self.exercises]
+        tables = [exercise.workout_table for exercise in self._exercises]
 
         for table in tables:
             for body_part, workout in table.items():
@@ -49,16 +81,16 @@ class Routine():
         return total_workout_table
 
     def add_comment(self, comment: Comment):
-        self.comments.append(comment)
+        self._comments.append(comment)
 
     def like(self):
-        self.likes += 1
+        self._likes += 1
 
     def dislike(self):
-        self.dislikes += 1
+        self._dislikes += 1
 
     def unlike(self):
-        self.likes = max(0, self.likes - 1)
+        self._likes = max(0, self._likes - 1)
 
     def undislike(self):
-        self.dislikes = max(0, self.dislikes - 1)
+        self._dislikes = max(0, self._dislikes - 1)
