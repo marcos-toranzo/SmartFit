@@ -33,7 +33,20 @@ class Routine():
         self.workout_table = self._build_workout_table()
 
     def _build_workout_table(self) -> map:
-        pass
+        '''
+        Calculates the general workout table. Takes the maximum of each body part.
+        '''
+        total_workout_table = {}
+
+        tables = [exercise.workout_table for exercise in self.exercises]
+
+        for table in tables:
+            for body_part, workout in table.items():
+                previous_value = 0 if body_part not in total_workout_table else total_workout_table[
+                    body_part]
+                total_workout_table[body_part] = max(previous_value, workout)
+
+        return total_workout_table
 
     def add_comment(self, comment: Comment):
         self.comments.append(comment)
