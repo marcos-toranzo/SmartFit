@@ -2,3 +2,12 @@ entity:
   - src/user.py
   - src/exercise.py
   - src/routine.py
+
+lenguaje: python
+
+test:
+  - tests/user_test.py
+  - tests/exercise_test.py
+  - tests/routine_test.py
+
+fichero_tareas: Makefile
