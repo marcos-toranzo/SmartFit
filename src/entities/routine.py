@@ -61,7 +61,7 @@ class Routine():
         return self._exercises
 
     @property
-    def workout_table(self) -> list:
+    def workout_table(self) -> map:
         return self._workout_table
 
     def _build_workout_table(self) -> map:
