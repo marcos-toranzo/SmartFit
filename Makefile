@@ -2,7 +2,7 @@ test:
 	pytest
 
 check:
-	python main.py
+	python -m compileall ./src/
 
 install:
 	pip install -r requirements.txt
