@@ -1,10 +1,10 @@
-from src.entities.exercise import BodyPart, Exercise, ExerciseStep
+from smartfit.entities.exercise import BodyPart, Exercise, ExerciseStep
 
 
 def test_exercise_constructor():
     description = 'My exercise'
     workout_table = {BodyPart.Abdomen: 10, BodyPart.Neck: 20}
-    steps = [ExerciseStep()]
+    steps = [ExerciseStep('', 2)]
 
     exercise = Exercise(description, workout_table, steps)
 

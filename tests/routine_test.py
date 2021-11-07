@@ -1,6 +1,6 @@
-from src.entities.exercise import BodyPart, Exercise, ExerciseStep
-from src.entities.user import HealthState, PhysicalActivity, User, UserFitnessProfile
-from src.entities.routine import Comment, Routine
+from smartfit.entities.exercise import BodyPart, Exercise, ExerciseStep
+from smartfit.entities.user import HealthState, PhysicalActivity, User, UserFitnessProfile
+from smartfit.entities.routine import Comment, Routine
 import pytest
 
 
@@ -35,9 +35,9 @@ def routine():
 
     exercises = [
         Exercise('Exercise 1', {BodyPart.Abdomen: 15,
-                 BodyPart.Back: 30}, [ExerciseStep()]),
+                 BodyPart.Back: 30}, [ExerciseStep('', 2)]),
         Exercise('Exercise 2', {BodyPart.Abdomen: 10,
-                 BodyPart.Neck: 20}, [ExerciseStep(), ExerciseStep()])
+                 BodyPart.Neck: 20}, [ExerciseStep('', 2), ExerciseStep('', 2)])
     ]
 
     return Routine('Routine', user, 100, 20, comments, tags, exercises)

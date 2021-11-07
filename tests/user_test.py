@@ -1,4 +1,4 @@
-from src.entities.user import HealthState, PhysicalActivity, User, UserFitnessProfile
+from smartfit.entities.user import HealthState, PhysicalActivity, User, UserFitnessProfile
 import pytest
 
 
