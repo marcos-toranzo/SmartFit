@@ -18,8 +18,25 @@ class BodyPart(Enum):
 
 
 class ExerciseStep():
-    def __init__(self):
-        pass
+    def __init__(self, step_image_url: str, duration_in_seconds: int):
+        '''
+        Initializes a new instance of ExerciseStep that defines the step to do and the time it
+        needs to be done in.
+
+        ### Parameters
+            step_image_url: ULR to the image showing the physical action.
+            duration_in_seconds: seconds the step should take to complete.
+        '''
+        self._step_image_url = step_image_url
+        self._duration_in_seconds = duration_in_seconds
+
+    @property
+    def step_image_url(self) -> str:
+        return self._step_image_url
+
+    @property
+    def duration_in_seconds(self) -> int:
+        return self._duration_in_seconds
 
 
 class Exercise():
