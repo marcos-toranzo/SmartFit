@@ -1,4 +1,4 @@
-from src.entities.user import User
+from smartfit.entities.user import User
 
 
 class Comment():

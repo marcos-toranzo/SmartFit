@@ -1,6 +1,6 @@
-from src.entities.exercise import BodyPart, Exercise, ExerciseStep
-from src.entities.user import HealthState, PhysicalActivity, User, UserFitnessProfile
-from src.entities.routine import Comment, Routine
+from smartfit.entities.exercise import BodyPart, Exercise, ExerciseStep
+from smartfit.entities.user import HealthState, PhysicalActivity, User, UserFitnessProfile
+from smartfit.entities.routine import Comment, Routine
 import pytest
 
 

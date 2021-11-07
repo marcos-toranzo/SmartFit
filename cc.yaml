@@ -1,7 +1,7 @@
 entidad:
-  - src/entities/user.py
-  - src/entities/exercise.py
-  - src/entities/routine.py
+  - smartfit/entities/user.py
+  - smartfit/entities/exercise.py
+  - smartfit/entities/routine.py
 
 lenguaje: python
 
