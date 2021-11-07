@@ -35,9 +35,9 @@ def routine():
 
     exercises = [
         Exercise('Exercise 1', {BodyPart.Abdomen: 15,
-                 BodyPart.Back: 30}, [ExerciseStep()]),
+                 BodyPart.Back: 30}, [ExerciseStep('', 2)]),
         Exercise('Exercise 2', {BodyPart.Abdomen: 10,
-                 BodyPart.Neck: 20}, [ExerciseStep(), ExerciseStep()])
+                 BodyPart.Neck: 20}, [ExerciseStep('', 2), ExerciseStep('', 2)])
     ]
 
     return Routine('Routine', user, 100, 20, comments, tags, exercises)
