@@ -64,8 +64,6 @@ def test_routine_unlike(routine: Routine):
 
     routine.like()
 
-    assert routine.likes == previous_likes + 1
-
     routine.unlike()
 
     assert routine.likes == previous_likes
@@ -75,8 +73,6 @@ def test_routine_undislike(routine: Routine):
     previous_dislikes = routine.dislikes
 
     routine.dislike()
-
-    assert routine.dislikes == previous_dislikes + 1
 
     routine.undislike()
 
