@@ -20,6 +20,8 @@ The tasks related to the project are implemented in the [Makefile](https://githu
 - **check**: checks for compilation and sintactic errors.
 - **install**: install dependencies of the project.
 
+You can read more about the choice of [task manager](docs/task_manager.md).
+
 # Documentation
 
 You can read a [more detailed description](docs/description.md) of the problem been solved.
