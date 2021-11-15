@@ -1,5 +1,7 @@
 FROM python:alpine3.14
 
+USER root
+
 # Create tester user -> install make for task management ->
 # create test directory -> set permission for tester user ->
 # install pytest for running tests -> delete pip
