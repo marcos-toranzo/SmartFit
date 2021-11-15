@@ -19,6 +19,7 @@ The tasks related to the project are implemented in the [Makefile](https://githu
 - **test**: will run every test in the [tests](https://github.com/marcos-toranzo/SmartFit/tree/main/tests) folder. Uses `pytest`.
 - **check**: checks for compilation and sintactic errors.
 - **install**: install dependencies of the project.
+- **container-test**: run tests in docker container.
 
 You can read more about the choice of [task manager](docs/task_manager.md).
 
@@ -35,6 +36,8 @@ You can check the [milestones](docs/milestones.md) for the project, where each o
 You can read the [user stories](docs/user_stories.md) that define the functioning of the app.
 
 You can learn about the [testing libraries and framework](docs/testing_framework.md) used in the project, and why we chose them.
+
+In order to run the tests in a controlled and secure environment, [docker containers](docs/container.md) were used.
 
 # Initial configuration
 
