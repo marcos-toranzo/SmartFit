@@ -24,3 +24,11 @@ In the second case, we would have a light version of `python` and quit light (~1
 When selecting alpine we were looking starting from scratch: install `make`, then `python` and `pip` and `pytest`. But this grew in size enough for us to decide to try another images that maybe came with these requirements and were a little bit lighter (by having less number of layers, for instance).
 
 Then we found `python:alpine3.14`, having installed python (with pip included) over alpine, being extremelly light (~45.5 MB) and having the basic we need, even though it doesn't have `make` or `pytest`, but when installed it didn't almost grow in size. This image is also very well maintained by the community.
+
+## Push docker container on changes
+
+In order to keep the docker image up-to-date with the state of the code, it was convenient to automatize the process of building and pushing the image to a registry. In this case the registry selected was Docker Hub and the automatization was done through GitHub Actions, using [Build and push Docker images](https://github.com/marketplace/actions/build-and-push-docker-images).
+
+For this process is necessary to log into Docker Hub, but for security reasons the credentials must not be places inside the workflow `.yml` file. Instead, the [GitHub actions secrets](https://github.com/marcos-toranzo/SmartFit/settings/secrets/actions) were used, where the secrets `DOCKERHUB_USERNAME` and `DOCKERHUB_TOKEN` were created containing the username and password, respectively.
+
+In this [workflow](https://github.com/marcos-toranzo/SmartFit/blob/main/.github/workflows/push-to-dockerhub.yml) gets specified first the branch on which we want to listen for changes. In this case is on the branch `main`, since this branch will contain the production code and should have been tested and cleaned previously to pushing. After we specified the branch, we need to write the steps to execute in order to build and push the image. First we add emulation support to build against more platforms without issues by setting up a QEMU virtual machine. Afterwards, we need to set up BuildX, the builder that is going to enable us to build multi-platform images. The next step is to login to DockerHub using the credentials stored in the secrets, and finally we need to build and push the image using the Dockerfile in the project.
