@@ -3,7 +3,7 @@ name: Push to GitHub Container Registry marcostoranzo/smartfit
 on:
   push:
     branches:
-      - main
+      - 'main'
 
 env:
   REGISTRY: ghcr.io
