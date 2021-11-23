@@ -1,8 +1,10 @@
 FROM python:alpine3.14
 
-# Create tester user -> install make for task management ->
+# Update container repository -> Create tester user -> 
+# install make for task management ->
 # install pytest for running tests -> delete pip
-RUN adduser -D tester \
+RUN apk update && apk upgrade \
+    && adduser -D tester \
     && apk add make \
     && pip install pytest \
     && python3 -m pip uninstall pip -y
