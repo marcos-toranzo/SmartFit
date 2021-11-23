@@ -19,7 +19,7 @@ Since the programming language used in the project is Python, the main interest 
 
 In the first case, it would be the ideal scenario. We would have the (almost) entire python environment to our disposal and not to worry about missing dependencies. The problems comes when we inspect this image and we see it size is huge (~ 916.66 MB), and since we are just going to need `make`, `pip` and `pytest`, this size seems excessive.
 
-In the second case, we would have a light version of `python` and quit light (~122.18 MB). This image contains only the minimum necessary libraries to run `python` but still managed to get a little to big for our purposes, since 122 MB seems again too much.
+In the second case, we would have a light version of `python` and quit light (~122.18 MB). This image contains only the minimum necessary libraries to run `python` but still managed to get a little too big for our purposes, since 122 MB seems, again, too much.
 
 When selecting alpine we were looking starting from scratch: install `make`, then `python` and `pip` and `pytest`. But this grew in size enough for us to decide to try another images that maybe came with these requirements and were a little bit lighter (by having less number of layers, for instance).
 
