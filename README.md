@@ -39,6 +39,8 @@ You can learn about the [testing libraries and framework](docs/testing_framework
 
 In order to run the tests in a controlled and secure environment, [docker containers](docs/container.md) were used.
 
+Information about the [continuous integration](docs/ci.md) implemented in the project.
+
 # Initial configuration
 
 Go [here](docs/initial_configuration.md) to see the steps taken for the initial configuration.

@@ -1,0 +1,17 @@
+language: python
+
+python:
+  - "3.9"
+
+branches:
+  only:
+    - main
+
+before_install:
+  - sudo apt-get -y install make
+
+install:
+  - pip install -r requirements.txt
+
+script:
+  - make test
