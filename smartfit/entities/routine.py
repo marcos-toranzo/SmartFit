@@ -8,12 +8,13 @@ class Comment():
 
 
 class Routine():
-    def __init__(self, description: str, uploaded_by: User, likes: int, dislikes: int, comments: list, tags: list, exercises: list):
+    def __init__(self, id: int, description: str, uploaded_by: User, likes: int, dislikes: int, comments: list, tags: list, exercises: list, workout_table: dict = None):
         '''
         Initializes a new instance of Routine that contains the [Exercise]s to do. Also contains the total workout table
         based on the individual workout tables from the exercises.
 
         ### Parameters
+            id: entity's id.
             description: short description about the routine.
             uploaded_by: [User] that uploaded the routine.
             likes: likes the routines has had so far. Must be an [int].
@@ -22,6 +23,7 @@ class Routine():
             tags: tags related to the routine. Must be a [list] of [str]s.
             exercises: exercises that comprehen the routines. Must be a [list] of [Exercise]s.
         '''
+        self._id = id
         self._description = description
         self._uploaded_by = uploaded_by
         self._likes = likes
@@ -30,7 +32,12 @@ class Routine():
         self._tags = tags
         self._exercises = exercises
 
-        self._workout_table = self._build_workout_table()
+        self._workout_table = workout_table if workout_table != None else Routine.build_workout_table(
+            exercises)
+
+    @property
+    def id(self) -> str:
+        return self._id
 
     @property
     def description(self) -> str:
@@ -64,13 +71,13 @@ class Routine():
     def workout_table(self) -> map:
         return self._workout_table
 
-    def _build_workout_table(self) -> map:
+    def build_workout_table(exercises: list) -> map:
         '''
         Calculates the general workout table. Takes the maximum of each body part.
         '''
         total_workout_table = {}
 
-        tables = [exercise.workout_table for exercise in self._exercises]
+        tables = [exercise.workout_table for exercise in exercises]
 
         for table in tables:
             for body_part, workout in table.items():

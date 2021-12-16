@@ -1,19 +1,19 @@
 from enum import Enum
 
 
-class HealthState(Enum):
-    Ill = 1
-    Limited = 2
-    Normal = 3
-    Healthy = 4
-    Optimal = 5
+class HealthState(str, Enum):
+    Ill = 'Ill'
+    Limited = 'Limited'
+    Normal = 'Normal'
+    Healthy = 'Healthy'
+    Optimal = 'Optimal'
 
 
-class PhysicalActivity(Enum):
-    Sedentary = 1
-    SomewhatActive = 2
-    Active = 3
-    VeryActive = 4
+class PhysicalActivity(str, Enum):
+    Sedentary = 'Sedentary'
+    SomewhatActive = 'SomewhatActive'
+    Active = 'Active'
+    VeryActive = 'VeryActive'
 
 
 class UserFitnessProfile():
@@ -36,11 +36,16 @@ class UserFitnessProfile():
 
 
 class User():
-    def __init__(self, first_name: str, last_name:  str, user_fitness_profile: UserFitnessProfile, rating: int):
+    def __init__(self, id: int, first_name: str, last_name:  str, user_fitness_profile: UserFitnessProfile, rating: int):
+        self._id = id
         self._first_name = first_name
         self._last_name = last_name
         self._user_fitness_profile = user_fitness_profile
         self._rating = rating
+
+    @property
+    def id(self) -> int:
+        return self._id
 
     @property
     def first_name(self) -> str:

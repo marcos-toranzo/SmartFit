@@ -14,12 +14,12 @@ def routine():
         80
     )
 
-    user = User('First', 'Last', fitness_profile, 100)
+    user = User(0, 'First', 'Last', fitness_profile, 100)
 
-    user_comment_1 = User('First1', 'Last1', UserFitnessProfile(
+    user_comment_1 = User(1, 'First1', 'Last1', UserFitnessProfile(
         20, HealthState.Healthy, 180, PhysicalActivity.Active, weight=80), 100)
 
-    user_comment_2 = User('First2', 'Last2', UserFitnessProfile(
+    user_comment_2 = User(2, 'First2', 'Last2', UserFitnessProfile(
         20, HealthState.Healthy, 180, PhysicalActivity.Active, weight=80), 100)
 
     comments = [
@@ -40,7 +40,7 @@ def routine():
                  BodyPart.Neck: 20}, [ExerciseStep('', 2), ExerciseStep('', 2)])
     ]
 
-    return Routine('Routine', user, 100, 20, comments, tags, exercises)
+    return Routine(0, 'Routine', user, 100, 20, comments, tags, exercises)
 
 
 def test_routine_like(routine: Routine):
@@ -82,7 +82,7 @@ def test_routine_undislike(routine: Routine):
 def test_add_comment_to_routine(routine: Routine):
     comments_length = len(routine.comments)
 
-    user = User('F', 'L', UserFitnessProfile(
+    user = User(3, 'F', 'L', UserFitnessProfile(
         21,
         HealthState.Limited,
         181,

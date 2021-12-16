@@ -1,20 +1,20 @@
 from enum import Enum
 
 
-class BodyPart(Enum):
-    Neck = 1
-    Shoulders = 2
-    Biceps = 3
-    Triceps = 4
-    Forearms = 5
-    Back = 6
-    LowerBack = 7
-    Abdomen = 8
-    Hip = 9
-    Quadriceps = 10
-    Calfs = 11
-    Legs = 12
-    Ankles = 13
+class BodyPart(str, Enum):
+    Neck = 'Neck'
+    Shoulders = 'Shoulders'
+    Biceps = 'Biceps'
+    Triceps = 'Triceps'
+    Forearms = 'Forearms'
+    Back = 'Back'
+    LowerBack = 'LowerBack'
+    Abdomen = 'Abdomen'
+    Hip = 'Hip'
+    Quadriceps = 'Quadriceps'
+    Calfs = 'Calfs'
+    Legs = 'Legs'
+    Ankles = 'Ankles'
 
 
 class ExerciseStep():
