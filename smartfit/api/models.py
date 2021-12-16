@@ -63,3 +63,11 @@ class RoutineModelForCreation(BaseModel):
     comments: Optional[List[str]] = []
     tags: Optional[List[str]] = []
     exercises: List[ExerciseModel]
+
+
+class RoutineModelForEdition(BaseModel):
+    description: Optional[str] = ''
+    likes: Optional[int] = 0
+    dislikes: Optional[int] = 0
+    comments: Optional[List[str]] = []
+    tags: Optional[List[str]] = []
