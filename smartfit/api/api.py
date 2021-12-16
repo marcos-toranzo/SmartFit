@@ -1,15 +1,22 @@
+import smartfit.api.database_provider as db
+import smartfit.api.controller as controller
+from smartfit.api.models import RoutineModel, RoutineId, RoutineModelForCreation, RoutineModelForEdition, UserModel, UserModelForCreation, WorkoutTable
 from typing import Optional
 from fastapi import FastAPI, Response, status, Request
+from logging.config import dictConfig
+import logging
+from smartfit.api.config import LogConfig
 
-from smartfit.api.models import RoutineModel, RoutineId, RoutineModelForCreation, RoutineModelForEdition, UserModel, UserModelForCreation, WorkoutTable
-import smartfit.api.controller as controller
-import smartfit.api.database_provider as db
 
 app = FastAPI()
+
+dictConfig(LogConfig().dict())
+logger = logging.getLogger("smartfit")
 
 
 @app.get("/")
 def read_root():
+    logging.info("test")
     return {"Home Page": "Wellcome to the SmartFit API"}
 
 
@@ -83,6 +90,9 @@ def upload_routine(routine: RoutineModelForCreation, response: Response):
     return result
 
 
+# - [US.6] As a contributor user, I would like to be able to like and review a routine
+# from another user, so other users can see more information about the routine before
+# deciding to do it
 @app.patch("/routines/{id}", status_code=status.HTTP_200_OK)
 def update_routine(id: int, routine: RoutineModelForEdition, response: Response):
     stored_routine = db.get_routine(id)
@@ -107,6 +117,10 @@ def update_routine(id: int, routine: RoutineModelForEdition, response: Response)
     return updated_routine
 
 
+# - [US.10] As a consumer, I want to see me full name in the app so I can tell if the
+# current profile is mine or I have to log in with my profile instead
+# - [US.11] As a consumer, I would like to check on my personal information like
+# weight or height, to see if there is something outdated.
 @app.get("/users/{id}", status_code=status.HTTP_200_OK)
 def get_user(id: int, response: Response):
     user = db.get_user(id)
