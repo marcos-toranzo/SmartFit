@@ -353,3 +353,4 @@ MigrationBackup/
 .vscode
 
 requirements.egg-info
+.env

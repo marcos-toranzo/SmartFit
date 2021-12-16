@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, BaseSettings
 
 
 class LogConfig(BaseModel):
@@ -28,3 +28,8 @@ class LogConfig(BaseModel):
     loggers = {
         "smartfit": {"handlers": ["default"], "level": LOG_LEVEL},
     }
+
+
+class Settings(BaseSettings):
+    class Config:
+        env_file = ".env"
