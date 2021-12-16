@@ -1,6 +1,6 @@
 import smartfit.api.database_provider as db
 import smartfit.api.controller as controller
-from smartfit.api.models import RoutineModel, RoutineId, RoutineModelForCreation, RoutineModelForEdition, UserModel, UserModelForCreation, WorkoutTable
+from smartfit.api.models import FitnessProfileModel, RoutineModel, RoutineId, RoutineModelForCreation, RoutineModelForEdition, UserModel, UserModelForCreation, UserModelForEdition, WorkoutTable
 from typing import Optional
 from fastapi import FastAPI, Response, status, Request
 from logging.config import dictConfig
@@ -104,11 +104,8 @@ def update_routine(id: int, routine: RoutineModelForEdition, response: Response)
 
     try:
         update_data = routine.dict(exclude_unset=True)
-
         updated_routine = stored_routine.copy(update=update_data)
-
         db.edit_routine(id, updated_routine)
-
     except:
         response.status_code = status.HTTP_400_BAD_REQUEST
 
@@ -143,3 +140,29 @@ def create_user(user: UserModelForCreation, response: Response):
         return {'Error': 'Could not create user.'}
 
     return result
+
+
+# - [US.12] As a consumer, I would like to be able to edit my personal information like
+# weight or height to match my current status and keep the app updated
+@app.patch("/users/{id}/fitness-profile", status_code=status.HTTP_200_OK)
+def update_user_fitness_profile(id: int, user_fitness_profile: FitnessProfileModel, response: Response):
+    stored_user = db.get_user(id)
+
+    if(stored_user == None):
+        response.status_code = status.HTTP_400_BAD_REQUEST
+
+        return {'Error': 'User with id {0} not found.'.format(id)}
+
+    try:
+        update_data = user_fitness_profile.dict(exclude_unset=True)
+        updated_fitness_profile = stored_user.fitness_profile_model.copy(
+            update=update_data)
+        updated_user = stored_user.copy(
+            update={'fitness_profile_model': updated_fitness_profile})
+        db.edit_user(id, updated_user)
+    except:
+        response.status_code = status.HTTP_400_BAD_REQUEST
+
+        return {'Error': 'Could not edit user.'}
+
+    return updated_user

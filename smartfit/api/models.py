@@ -10,7 +10,7 @@ RoutineId = NewType('RoutineId', int)
 
 
 class FitnessProfileModel(BaseModel):
-    age: int
+    age: Optional[int] = 20
     health_state: Optional[HealthState] = HealthState.Normal
     height: Optional[int] = 170
     physical_activity: Optional[PhysicalActivity] = PhysicalActivity.SomewhatActive
@@ -30,6 +30,10 @@ class UserModelForCreation(BaseModel):
     last_name: str
     fitness_profile_model: FitnessProfileModel
     rating: int
+
+
+class UserModelForEdition(BaseModel):
+    fitness_profile_model: FitnessProfileModel
 
 
 class ExerciseStepModel(BaseModel):
