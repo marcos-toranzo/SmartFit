@@ -5,7 +5,7 @@ check:
 	python -m compileall ./smartfit/
 
 install:
-	pip install -r requirements.txt
+	pip install .
 
 container-test:
 	docker run -t -v $(pwd):/app/test marcostoranzo/smartfit
