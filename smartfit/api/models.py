@@ -25,6 +25,14 @@ class UserModel(BaseModel):
     rating: int
 
 
+class UserModelForCreation(BaseModel):
+    id: UserId
+    name: str
+    last_name: str
+    fitness_profile_model: FitnessProfileModel
+    rating: int
+
+
 class ExerciseStepModel(BaseModel):
     step_image_url: str
     duration_in_seconds: Optional[int] = 20
@@ -46,3 +54,13 @@ class RoutineModel(BaseModel):
     tags: Optional[List[str]] = []
     exercises: List[ExerciseModel]
     workout_table: Optional[WorkoutTable] = {}
+
+
+class RoutineModelForCreation(BaseModel):
+    description: Optional[str] = ''
+    uploaded_by: int
+    likes: Optional[int] = 0
+    dislikes: Optional[int] = 0
+    comments: Optional[List[str]] = []
+    tags: Optional[List[str]] = []
+    exercises: List[ExerciseModel]

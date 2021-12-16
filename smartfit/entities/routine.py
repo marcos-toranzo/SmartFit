@@ -8,7 +8,7 @@ class Comment():
 
 
 class Routine():
-    def __init__(self, id: int, description: str, uploaded_by: User, likes: int, dislikes: int, comments: list, tags: list, exercises: list):
+    def __init__(self, id: int, description: str, uploaded_by: User, likes: int, dislikes: int, comments: list, tags: list, exercises: list, workout_table: dict = None):
         '''
         Initializes a new instance of Routine that contains the [Exercise]s to do. Also contains the total workout table
         based on the individual workout tables from the exercises.
@@ -32,7 +32,8 @@ class Routine():
         self._tags = tags
         self._exercises = exercises
 
-        self._workout_table = self._build_workout_table()
+        self._workout_table = workout_table if workout_table != None else Routine.build_workout_table(
+            exercises)
 
     @property
     def id(self) -> str:
@@ -70,13 +71,13 @@ class Routine():
     def workout_table(self) -> map:
         return self._workout_table
 
-    def _build_workout_table(self) -> map:
+    def build_workout_table(exercises: list) -> map:
         '''
         Calculates the general workout table. Takes the maximum of each body part.
         '''
         total_workout_table = {}
 
-        tables = [exercise.workout_table for exercise in self._exercises]
+        tables = [exercise.workout_table for exercise in exercises]
 
         for table in tables:
             for body_part, workout in table.items():
