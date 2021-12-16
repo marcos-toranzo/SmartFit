@@ -26,7 +26,6 @@ class UserModel(BaseModel):
 
 
 class UserModelForCreation(BaseModel):
-    id: UserId
     name: str
     last_name: str
     fitness_profile_model: FitnessProfileModel

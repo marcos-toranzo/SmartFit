@@ -1,6 +1,7 @@
+from typing import Optional
 from fastapi import FastAPI, Response, status, Request
 
-from smartfit.api.models import RoutineModel, RoutineId, RoutineModelForCreation, UserModel, WorkoutTable
+from smartfit.api.models import RoutineModel, RoutineId, RoutineModelForCreation, UserModel, UserModelForCreation, WorkoutTable
 import smartfit.api.controller as controller
 import smartfit.api.database_provider as db
 
@@ -50,7 +51,7 @@ def get_routines():
     return {'routines': routines}
 
 
-@app.get("/routines/{id}", status_code=status.HTTP_200_OK, response_model=RoutineModel)
+@app.get("/routines/{id}", status_code=status.HTTP_200_OK)
 def get_routine(response: Response, id: RoutineId):
     routine = db.get_routine(id)
 
@@ -64,7 +65,7 @@ def get_routine(response: Response, id: RoutineId):
 
 # [US.5] As a contributor user, I would like to upload a routine with personalized
 # data, so other users could use it and review it
-@app.post("/routines/", status_code=status.HTTP_201_CREATED, response_model=RoutineModel)
+@app.post("/routines/", status_code=status.HTTP_201_CREATED)
 def upload_routine(routine: RoutineModelForCreation, response: Response):
     result = db.add_routine(routine)
 
@@ -72,5 +73,30 @@ def upload_routine(routine: RoutineModelForCreation, response: Response):
         response.status_code = status.HTTP_400_BAD_REQUEST
 
         return {'Error': 'Could not insert routine.'}
+
+    return result
+
+
+@app.get("/users/{id}", status_code=status.HTTP_200_OK)
+def get_user(id: int, response: Response):
+    user = db.get_user(id)
+
+    print(user)
+    if user == None:
+        response.status_code = status.HTTP_404_NOT_FOUND
+
+        return {'Error': 'User with id {0} not found.'.format(id)}
+
+    return user
+
+
+@app.post("/users/",  status_code=status.HTTP_201_CREATED)
+def create_user(user: UserModelForCreation, response: Response):
+    result = db.create_user(user)
+
+    if result == None:
+        response.status_code = status.HTTP_400_BAD_REQUEST
+
+        return {'Error': 'Could not create user.'}
 
     return result
