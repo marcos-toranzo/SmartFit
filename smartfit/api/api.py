@@ -1,7 +1,6 @@
 import smartfit.api.database_provider as db
 import smartfit.api.controller as controller
-from smartfit.api.models import FitnessProfileModel, RoutineModel, RoutineId, RoutineModelForCreation, RoutineModelForEdition, UserModel, UserModelForCreation, UserModelForEdition, WorkoutTable
-from typing import Optional
+from smartfit.api.models import FitnessProfileModel, RoutineId, RoutineModelForCreation, RoutineModelForEdition, UserModelForCreation
 from fastapi import FastAPI, Response, status, Request
 from logging.config import dictConfig
 import logging
