@@ -215,13 +215,6 @@ def get_routine(id: int) -> Optional[RoutineModel]:
 def edit_routine(id: int, new_routine: RoutineModel):
     global __routines
 
-    print('ROUTINES --------------------------------------')
-    print(__routines)
-    print('-----------------------------------------------')
-    print('NEW_ROUTINE -----------------------------------')
-    print(new_routine)
-    print('-----------------------------------------------')
-
     __routines = [routine if routine.id !=
                   id else new_routine for routine in __routines]
 

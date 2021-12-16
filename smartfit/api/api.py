@@ -95,15 +95,7 @@ def update_routine(id: int, routine: RoutineModelForEdition, response: Response)
     try:
         update_data = routine.dict(exclude_unset=True)
 
-        print('UPDATE_DATA -----------------------------------')
-        print(update_data)
-        print('-----------------------------------------------')
-
         updated_routine = stored_routine.copy(update=update_data)
-
-        print('UPDATED_ROUTINE -------------------------------')
-        print(updated_routine)
-        print('-----------------------------------------------')
 
         db.edit_routine(id, updated_routine)
 
@@ -119,7 +111,6 @@ def update_routine(id: int, routine: RoutineModelForEdition, response: Response)
 def get_user(id: int, response: Response):
     user = db.get_user(id)
 
-    print(user)
     if user == None:
         response.status_code = status.HTTP_404_NOT_FOUND
 
