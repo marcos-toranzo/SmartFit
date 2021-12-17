@@ -20,7 +20,7 @@ check:
 	python -m compileall ./smartfit/
 
 install:
-	python setup.py install --prefix ~/.local
+	pip install pytest "fastapi[all]" "uvicorn[standard]"
 
 install-travis:
 	pip install .
