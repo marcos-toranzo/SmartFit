@@ -1,5 +1,4 @@
 -include .env
-include .env
 
 SERVER_HOST = $(HOST)
 
