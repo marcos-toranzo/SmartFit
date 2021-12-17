@@ -4,10 +4,11 @@ from smartfit.api.models import FitnessProfileModel, RoutineId, RoutineModelForC
 from fastapi import FastAPI, Response, status, Request
 from logging.config import dictConfig
 import logging
-from smartfit.api.config import LogConfig
+from smartfit.api.config import LogConfig, Settings
+import uvicorn
 
 
-app = FastAPI()
+app = FastAPI(title='SmartFit')
 
 dictConfig(LogConfig().dict())
 logger = logging.getLogger('smartfit')
@@ -193,3 +194,9 @@ def update_user_fitness_profile(id: int, user_fitness_profile: FitnessProfileMod
     logger.info('User successfully edited.')
 
     return updated_user
+
+
+settings = Settings()
+
+if __name__ == '__main__':
+    uvicorn.run(app, host=settings.host, port=settings.port)
