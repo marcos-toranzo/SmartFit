@@ -20,7 +20,7 @@ check:
 	python -m compileall ./smartfit/
 
 install:
-	pip install .
+	python setup.py install
 
 container-test:
 	docker run -t -v $(pwd):/app/test marcostoranzo/smartfit
