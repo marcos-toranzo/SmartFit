@@ -22,6 +22,9 @@ check:
 install:
 	python setup.py install
 
+install-travis:
+	pip install .
+
 container-test:
 	docker run -t -v $(pwd):/app/test marcostoranzo/smartfit
 
