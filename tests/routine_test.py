@@ -1,5 +1,10 @@
 from smartfit.entities.exercise import BodyPart, Exercise, ExerciseStep
-from smartfit.entities.user import HealthState, PhysicalActivity, User, UserFitnessProfile
+from smartfit.entities.user import (
+    HealthState,
+    PhysicalActivity,
+    User,
+    UserFitnessProfile,
+)
 from smartfit.entities.routine import Comment, Routine
 import pytest
 
@@ -7,40 +12,52 @@ import pytest
 @pytest.fixture
 def routine():
     fitness_profile = UserFitnessProfile(
-        20,
-        HealthState.Healthy,
-        180,
-        PhysicalActivity.Active,
-        80
+        20, HealthState.Healthy, 180, PhysicalActivity.Active, 80
     )
 
-    user = User(0, 'First', 'Last', fitness_profile, 100)
+    user = User(0, "First", "Last", fitness_profile, 100)
 
-    user_comment_1 = User(1, 'First1', 'Last1', UserFitnessProfile(
-        20, HealthState.Healthy, 180, PhysicalActivity.Active, weight=80), 100)
+    user_comment_1 = User(
+        1,
+        "First1",
+        "Last1",
+        UserFitnessProfile(
+            20, HealthState.Healthy, 180, PhysicalActivity.Active, weight=80
+        ),
+        100,
+    )
 
-    user_comment_2 = User(2, 'First2', 'Last2', UserFitnessProfile(
-        20, HealthState.Healthy, 180, PhysicalActivity.Active, weight=80), 100)
+    user_comment_2 = User(
+        2,
+        "First2",
+        "Last2",
+        UserFitnessProfile(
+            20, HealthState.Healthy, 180, PhysicalActivity.Active, weight=80
+        ),
+        100,
+    )
 
     comments = [
-        Comment('Comment 1', user_comment_1),
-        Comment('Comment 2', user_comment_2)
+        Comment("Comment 1", user_comment_1),
+        Comment("Comment 2", user_comment_2),
     ]
 
-    tags = [
-        'Tag 1',
-        'Tag 2',
-        'Tag 3'
-    ]
+    tags = ["Tag 1", "Tag 2", "Tag 3"]
 
     exercises = [
-        Exercise('Exercise 1', {BodyPart.Abdomen: 15,
-                 BodyPart.Back: 30}, [ExerciseStep('', 2)]),
-        Exercise('Exercise 2', {BodyPart.Abdomen: 10,
-                 BodyPart.Neck: 20}, [ExerciseStep('', 2), ExerciseStep('', 2)])
+        Exercise(
+            "Exercise 1",
+            {BodyPart.Abdomen: 15, BodyPart.Back: 30},
+            [ExerciseStep("", 2)],
+        ),
+        Exercise(
+            "Exercise 2",
+            {BodyPart.Abdomen: 10, BodyPart.Neck: 20},
+            [ExerciseStep("", 2), ExerciseStep("", 2)],
+        ),
     ]
 
-    return Routine(0, 'Routine', user, 100, 20, comments, tags, exercises)
+    return Routine(0, "Routine", user, 100, 20, comments, tags, exercises)
 
 
 def test_routine_like(routine: Routine):
@@ -82,15 +99,17 @@ def test_routine_undislike(routine: Routine):
 def test_add_comment_to_routine(routine: Routine):
     comments_length = len(routine.comments)
 
-    user = User(3, 'F', 'L', UserFitnessProfile(
-        21,
-        HealthState.Limited,
-        181,
-        PhysicalActivity.Sedentary,
-        81
-    ), 200)
+    user = User(
+        3,
+        "F",
+        "L",
+        UserFitnessProfile(
+            21, HealthState.Limited, 181, PhysicalActivity.Sedentary, 81
+        ),
+        200,
+    )
 
-    new_comment = Comment('New Comment', user)
+    new_comment = Comment("New Comment", user)
 
     routine.add_comment(new_comment)
 
@@ -103,10 +122,6 @@ def test_add_comment_to_routine(routine: Routine):
 
 
 def test_total_table(routine: Routine):
-    total_table = {
-        BodyPart.Abdomen: 15,
-        BodyPart.Back: 30,
-        BodyPart.Neck: 20
-    }
+    total_table = {BodyPart.Abdomen: 15, BodyPart.Back: 30, BodyPart.Neck: 20}
 
     assert routine.workout_table == total_table

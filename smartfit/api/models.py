@@ -1,12 +1,11 @@
-
 from pydantic import BaseModel
 from typing import Optional, List, Mapping, NewType
 
 from smartfit.entities.user import HealthState, PhysicalActivity
 
 WorkoutTable = Mapping[str, int]
-UserId = NewType('UserId', int)
-RoutineId = NewType('RoutineId', int)
+UserId = NewType("UserId", int)
+RoutineId = NewType("RoutineId", int)
 
 
 class FitnessProfileModel(BaseModel):
@@ -42,14 +41,14 @@ class ExerciseStepModel(BaseModel):
 
 
 class ExerciseModel(BaseModel):
-    description: Optional[str] = ''
+    description: Optional[str] = ""
     workout_table: Optional[WorkoutTable] = {}
     steps: List[ExerciseStepModel]
 
 
 class RoutineModel(BaseModel):
     id: RoutineId
-    description: Optional[str] = ''
+    description: Optional[str] = ""
     uploaded_by: int
     likes: Optional[int] = 0
     dislikes: Optional[int] = 0
@@ -60,7 +59,7 @@ class RoutineModel(BaseModel):
 
 
 class RoutineModelForCreation(BaseModel):
-    description: Optional[str] = ''
+    description: Optional[str] = ""
     uploaded_by: int
     likes: Optional[int] = 0
     dislikes: Optional[int] = 0
@@ -70,7 +69,7 @@ class RoutineModelForCreation(BaseModel):
 
 
 class RoutineModelForEdition(BaseModel):
-    description: Optional[str] = ''
+    description: Optional[str] = ""
     likes: Optional[int] = 0
     dislikes: Optional[int] = 0
     comments: Optional[List[str]] = []

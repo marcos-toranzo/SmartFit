@@ -4,15 +4,15 @@ import pytest
 
 @pytest.fixture
 def exercise():
-    description = 'My exercise'
+    description = "My exercise"
     workout_table = {BodyPart.Abdomen: 10, BodyPart.Neck: 20}
-    steps = [ExerciseStep('', 2)]
+    steps = [ExerciseStep("", 2)]
 
     return Exercise(description, workout_table, steps)
 
 
 def test_exercise_description(exercise: Exercise):
-    assert exercise.description == 'My exercise'
+    assert exercise.description == "My exercise"
 
 
 def test_exercise_workout_table(exercise: Exercise):
