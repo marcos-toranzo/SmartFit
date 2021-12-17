@@ -355,3 +355,4 @@ MigrationBackup/
 requirements.egg-info
 .env
 build/
+dist/

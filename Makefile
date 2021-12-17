@@ -20,6 +20,9 @@ check:
 	python -m compileall ./smartfit/
 
 install:
+	python setup.py install
+
+install-travis:
 	pip install .
 
 container-test:
