@@ -27,3 +27,7 @@ container-test:
 
 run-server:
 	uvicorn smartfit.api.api:app --reload --host $(SERVER_HOST) --port $(SERVER_PORT)
+
+build:
+	echo "Nothing to build"
+	
