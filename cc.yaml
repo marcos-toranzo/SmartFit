@@ -11,3 +11,5 @@ test:
   - tests/routine_test.py
 
 fichero_tareas: Makefile
+
+make: make
