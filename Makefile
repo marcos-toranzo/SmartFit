@@ -20,9 +20,6 @@ check:
 	python -m compileall ./smartfit/
 
 install:
-	pip install pytest "fastapi[all]" "uvicorn[standard]"
-
-install-travis:
 	pip install .
 
 container-test:
