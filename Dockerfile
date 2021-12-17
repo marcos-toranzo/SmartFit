@@ -6,8 +6,7 @@ FROM python:3.9-slim
 RUN apt-get update && apt-get upgrade -y \
     && useradd -ms /bin/bash tester \
     && apt-get install make \
-    && pip install pytest "fastapi[all]" "uvicorn[standard]" \
-    && python3 -m pip uninstall pip -y
+    && pip install pytest "fastapi[all]" "uvicorn[standard]"
 
 # Use tester user with no root privileges
 USER tester
