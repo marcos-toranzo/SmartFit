@@ -8,7 +8,10 @@ def get_recommended_routines(workout_table: WorkoutTable, routines: List[Routine
 
     for routine in routines:
         intersection = [
-            body_part for body_part in body_parts if body_part in routine.workout_table.keys()]
+            body_part
+            for body_part in body_parts
+            if body_part in routine.workout_table.keys()
+        ]
         if len(intersection) > 0:
             result_routines.append(routine)
 

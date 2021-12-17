@@ -22,8 +22,15 @@ The tasks related to the project are implemented in the [Makefile](https://githu
 - **check**: checks for compilation and sintactic errors.
 - **install**: install dependencies of the project.
 - **container-test**: run tests in docker container.
+- **run-server**: run the API server.
 
 You can read more about the choice of [task manager](docs/task_manager.md).
+
+## Dotenv
+
+The project uses the configuration set in the `.env` file in the root directory. Right now, only the `HOST` and `PORT` configuarion for the API server is used. This file is ignored by git since it can contain sensitive informatios like credentials and secret keys we don't want to make public.
+
+In case of not having specified `HOST`, the default value will be `127.0.0.1`. In the case of the `PORT` it will be `8000`.
 
 # Documentation
 
@@ -42,6 +49,8 @@ You can learn about the [testing libraries and framework](docs/testing_framework
 In order to run the tests in a controlled and secure environment, [docker containers](docs/container.md) were used.
 
 Information about the [continuous integration](docs/ci.md) implemented in the project.
+
+You can read about the [API services](docs/api.md) implemented, the process of testing them and how they comply with the user stories.
 
 # Initial configuration
 

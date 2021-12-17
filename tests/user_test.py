@@ -1,10 +1,21 @@
-from smartfit.entities.user import HealthState, PhysicalActivity, User, UserFitnessProfile
+from smartfit.entities.user import (
+    HealthState,
+    PhysicalActivity,
+    User,
+    UserFitnessProfile,
+)
 import pytest
 
 
 @pytest.fixture
 def user() -> User:
-    return User(0, 'First', 'Last', UserFitnessProfile(20, HealthState.Healthy, 180, PhysicalActivity.Active, 80), 100)
+    return User(
+        0,
+        "First",
+        "Last",
+        UserFitnessProfile(20, HealthState.Healthy, 180, PhysicalActivity.Active, 80),
+        100,
+    )
 
 
 def test_user_age(user: User):

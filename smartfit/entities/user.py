@@ -2,23 +2,30 @@ from enum import Enum
 
 
 class HealthState(str, Enum):
-    Ill = 'Ill'
-    Limited = 'Limited'
-    Normal = 'Normal'
-    Healthy = 'Healthy'
-    Optimal = 'Optimal'
+    Ill = "Ill"
+    Limited = "Limited"
+    Normal = "Normal"
+    Healthy = "Healthy"
+    Optimal = "Optimal"
 
 
 class PhysicalActivity(str, Enum):
-    Sedentary = 'Sedentary'
-    SomewhatActive = 'SomewhatActive'
-    Active = 'Active'
-    VeryActive = 'VeryActive'
+    Sedentary = "Sedentary"
+    SomewhatActive = "SomewhatActive"
+    Active = "Active"
+    VeryActive = "VeryActive"
 
 
-class UserFitnessProfile():
-    def __init__(self, age: int, health_state: HealthState, height: int, physical_activity: PhysicalActivity, weight: int):
-        '''
+class UserFitnessProfile:
+    def __init__(
+        self,
+        age: int,
+        health_state: HealthState,
+        height: int,
+        physical_activity: PhysicalActivity,
+        weight: int,
+    ):
+        """
         Initializes a new instance of UserFitnessProfile that handles the user's physical fitness information.
 
         ### Parameters
@@ -27,7 +34,7 @@ class UserFitnessProfile():
             physical_activity: how physically active the user is.
             height: user's height in centimeters.
             weight: user's weight in kilograms.
-        '''
+        """
         self.age = age
         self.health_state = health_state
         self.height = height
@@ -35,8 +42,15 @@ class UserFitnessProfile():
         self.weight = weight
 
 
-class User():
-    def __init__(self, id: int, first_name: str, last_name:  str, user_fitness_profile: UserFitnessProfile, rating: int):
+class User:
+    def __init__(
+        self,
+        id: int,
+        first_name: str,
+        last_name: str,
+        user_fitness_profile: UserFitnessProfile,
+        rating: int,
+    ):
         self._id = id
         self._first_name = first_name
         self._last_name = last_name
@@ -87,31 +101,56 @@ class User():
         profile = self._user_fitness_profile
 
         self._user_fitness_profile = UserFitnessProfile(
-            age, profile.health_state, profile.height, profile.physical_activity, profile.weight)
+            age,
+            profile.health_state,
+            profile.height,
+            profile.physical_activity,
+            profile.weight,
+        )
 
     def update_health_state(self, health_state: HealthState):
         profile = self._user_fitness_profile
 
         self._user_fitness_profile = UserFitnessProfile(
-            profile.age, health_state, profile.height, profile.physical_activity, profile.weight)
+            profile.age,
+            health_state,
+            profile.height,
+            profile.physical_activity,
+            profile.weight,
+        )
 
     def update_height(self, height: int):
         profile = self._user_fitness_profile
 
         self._user_fitness_profile = UserFitnessProfile(
-            profile.age, profile.health_state, height, profile.physical_activity, profile.weight)
+            profile.age,
+            profile.health_state,
+            height,
+            profile.physical_activity,
+            profile.weight,
+        )
 
     def update_physical_activity(self, physical_activity: PhysicalActivity):
         profile = self._user_fitness_profile
 
         self._user_fitness_profile = UserFitnessProfile(
-            profile.age, profile.health_state, profile.height, physical_activity, profile.weight)
+            profile.age,
+            profile.health_state,
+            profile.height,
+            physical_activity,
+            profile.weight,
+        )
 
     def update_weight(self, weight: int):
         profile = self._user_fitness_profile
 
         self._user_fitness_profile = UserFitnessProfile(
-            profile.age, profile.health_state, profile.height, profile.physical_activity, weight)
+            profile.age,
+            profile.health_state,
+            profile.height,
+            profile.physical_activity,
+            weight,
+        )
 
     def update_rating(self, rating: int):
         self._rating = rating
