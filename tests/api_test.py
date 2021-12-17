@@ -1,6 +1,6 @@
 from fastapi.testclient import TestClient
 from smartfit.api.api import app
-from smartfit.api.models import RoutineModelForCreation, UserModel, RoutineModel
+from smartfit.api.models import UserModel, RoutineModel
 import pytest
 import smartfit.api.database_provider as db
 from smartfit.entities.routine import Routine
