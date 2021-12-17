@@ -14,7 +14,7 @@ dictConfig(LogConfig().dict())
 logger = logging.getLogger('smartfit')
 
 
-@app.get('/')
+@app.get('/', status_code=status.HTTP_200_OK)
 def read_root():
     logger.info('Home Page reached')
     return {'Home Page': 'Welcome to the SmartFit API'}
@@ -53,7 +53,10 @@ def get_recommended_routines(request: Request, response: Response):
 
     logger.info('Recommended routines successfully gotten.')
 
-    return {'recommended_routines': recommended_routines}
+    return {
+        'count': len(recommended_routines),
+        'recommended_routines': recommended_routines
+    }
 
 
 # - [US.2] As a consumer user, I would like to know how good reviewed is a specific
@@ -95,9 +98,9 @@ def upload_routine(routine: RoutineModelForCreation, response: Response):
 
     if result == None:
         response.status_code = status.HTTP_400_BAD_REQUEST
-        logger.error('Could not insert routine.')
+        logger.error('Could not upload routine.')
 
-        return {'Error': 'Could not insert routine.'}
+        return {'Error': 'Could not upload routine.'}
 
     logger.info('Routine successfully uploaded.')
 
