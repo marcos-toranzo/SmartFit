@@ -20,7 +20,7 @@ check:
 	python -m compileall ./smartfit/
 
 install:
-	python setup.py install --user
+	python setup.py install --prefix ~/.local
 
 install-travis:
 	pip install .
